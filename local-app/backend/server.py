@@ -83,7 +83,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         if urlsplit(self.path).path.startswith('/api/'):
             return self.api()
-        path = unquote(urlsplit(self.path).path).lstrip('/') or 'index.html'
+        path = unquote(urlsplit(self.path).path).replace('\\','/').lstrip('/') or 'index.html'
         try:
             candidate=(PUBLIC/path).resolve()
             if not candidate.is_relative_to(PUBLIC):

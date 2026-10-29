@@ -18,7 +18,8 @@ jobs:
           node-version: '24'
           cache: npm
       - name: Check local app and permissions
-        run: python local-app/tests/check_all.py
+        run: |
+          python local-app/tests/check_all.py || { cat local-app/data/startup-checks.log; exit 1; }
       - name: Install cloud dependencies
         run: npm ci --no-audit --no-fund
       - name: Check cloud types and API
