@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Checkout · RaiseSport</title><link rel="icon" href="/images/logo.jpeg"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/checkout/checkout.css"><script src="/auth.js" defer></script><script src="/checkout/checkout.js" defer></script></head>
+<body>
+  <header class="checkout-header"><div class="container"><a class="checkout-brand" href="/">RAISE<span>SPORT</span></a><a href="/#shop">← Back to shop</a></div></header>
+  <main class="container checkout-main">
+    <nav class="checkout-steps" aria-label="Checkout progress"><a href="/?cart=1">1 · Your cart ✓</a><span aria-current="step">2 · Your details</span></nav>
+    <h1>Let’s get your order ready.</h1><p class="checkout-intro">Your cart is confirmed. Add your details so we can arrange payment and get your gear to you.</p>
+    <p id="pageError" class="checkout-error" role="alert" hidden></p>
+    <div id="emptyCart" class="checkout-card" hidden><h2>Your cart is empty</h2><p>Add a few products before checking out.</p><a class="btn btn-primary" href="/#shop">Browse the shop</a></div>
+    <div id="checkoutLayout" class="checkout-layout" hidden>
+      <div>
+        <div id="signInNotice" class="checkout-card" hidden><h2>Sign in to continue</h2><p>Your products are saved. Sign in or create an account to place your order.</p><a class="btn btn-primary" href="/login/?next=checkout">Sign in / create account →</a></div>
+        <form id="checkoutForm" class="checkout-card" data-private hidden>
+          <h2>Contact details</h2><p class="section-help">Who should we contact about this order?</p>
+          <div class="field"><label for="orderName">Full name</label><input id="orderName" name="name" autocomplete="name" required minlength="2" maxlength="200"></div>
+          <div class="checkout-form-row"><div class="field"><label for="orderEmail">Account email</label><input id="orderEmail" type="email" autocomplete="email" readonly></div><div class="field"><label for="orderPhone">Phone number</label><input id="orderPhone" name="phone" type="tel" autocomplete="tel" required maxlength="40" placeholder="e.g. 082 123 4567"></div></div>
+          <h2 class="delivery-heading">How would you like your order?</h2>
+          <div class="field"><label for="orderFulfilment">Collection or delivery</label><select id="orderFulfilment" name="fulfilment"><option value="collection">Collection — arrange with RaiseSport</option><option value="delivery">Delivery — confirm cost with RaiseSport</option></select></div>
+          <div id="addressField" class="field" hidden><label for="orderAddress">Delivery address</label><textarea id="orderAddress" name="address" rows="3" maxlength="1000" autocomplete="street-address" placeholder="Street, suburb, city and postal code"></textarea></div>
+          <div class="field"><label for="orderNotes">Additional instructions <span class="optional">(optional)</span></label><textarea id="orderNotes" name="customer_notes" rows="3" maxlength="2000" placeholder="Collection arrangements, delivery instructions or anything we should know"></textarea></div>
+          <p class="payment-note"><strong>PayFast — Coming soon<br>Bank transfer — Coming soon</strong><br>No payment is taken now. Your order will be saved while payments are being set up.</p>
+          <p id="orderError" class="checkout-error" role="alert" hidden></p>
+          <button id="placeOrder" class="btn btn-primary" type="submit">Place order →</button>
+        </form>
+      </div>
+      <aside class="checkout-card order-summary"><div class="summary-heading"><h2>Your order</h2><a href="/?cart=1">Edit cart</a></div><div id="summaryItems"></div><div class="summary-total"><span>Product subtotal</span><strong id="summaryTotal"></strong></div><p class="summary-help">Delivery, if requested, will be quoted separately.</p></aside>
+    </div>
+    <div id="orderSuccess" class="checkout-card success-card" data-private hidden tabindex="-1"><span class="success-icon" aria-hidden="true">✓</span><h2>Your order is saved.</h2><p id="successReference"></p><p id="successTotal"></p><p>PayFast and bank transfer are coming soon. Your order is saved while payments are being set up. No payment has been taken.</p><div class="success-links"><a class="btn btn-primary" href="/#shop">Continue shopping</a><a class="btn btn-ghost" href="/athlete/?view=orders">View my orders</a></div></div>
+  </main>
+</body></html>

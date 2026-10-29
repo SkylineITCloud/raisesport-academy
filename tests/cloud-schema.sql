@@ -1,0 +1,12 @@
+CREATE TABLE users(id INTEGER PRIMARY KEY,name TEXT,email TEXT UNIQUE,password TEXT,verified INTEGER DEFAULT 0,code TEXT,expires REAL,sent REAL DEFAULT 0,attempts INTEGER DEFAULT 0, created REAL, role TEXT DEFAULT 'athlete');
+CREATE TABLE sessions(token TEXT PRIMARY KEY,user_id INTEGER,expires REAL, last_seen REAL);
+CREATE TABLE subscriptions(user_id INTEGER PRIMARY KEY,plan TEXT,billing TEXT,amount REAL,status TEXT, created REAL, updated REAL, notes TEXT DEFAULT '');
+CREATE TABLE orders(ref TEXT PRIMARY KEY,user_id INTEGER,items TEXT,total REAL,status TEXT,created REAL, phone TEXT DEFAULT '', address TEXT DEFAULT '', fulfilment TEXT DEFAULT 'collection', notes TEXT DEFAULT '', updated REAL, lines TEXT DEFAULT '[]', customer_name TEXT DEFAULT '', customer_notes TEXT DEFAULT '');
+CREATE TABLE contacts(id INTEGER PRIMARY KEY,name TEXT,email TEXT,subject TEXT,message TEXT,created REAL, status TEXT DEFAULT 'new', notes TEXT DEFAULT '', phone TEXT DEFAULT '', updated REAL);
+CREATE TABLE newsletter(email TEXT PRIMARY KEY,created REAL);
+CREATE TABLE athlete_profiles(user_id INTEGER PRIMARY KEY,phone TEXT DEFAULT '',sport TEXT DEFAULT 'Football',position TEXT DEFAULT '',club TEXT DEFAULT '',hometown TEXT DEFAULT '',bio TEXT DEFAULT '');
+CREATE TABLE athlete_assignments(athlete_id INTEGER PRIMARY KEY,manager_id INTEGER NOT NULL);
+CREATE TABLE athlete_events(id INTEGER PRIMARY KEY,athlete_id INTEGER,title TEXT,kind TEXT,starts REAL,venue TEXT,details TEXT,status TEXT DEFAULT 'scheduled');
+CREATE TABLE athlete_messages(id INTEGER PRIMARY KEY,athlete_id INTEGER,author TEXT,body TEXT,created REAL);
+CREATE TABLE account_login_attempts(email TEXT,created REAL);
+CREATE TABLE manager_activity(id INTEGER PRIMARY KEY,kind TEXT,reference TEXT,detail TEXT,created REAL);

@@ -1,0 +1,29 @@
+name: App checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Check local app and permissions
+        run: python local-app/tests/check_all.py
+      - name: Install cloud dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Check cloud types and API
+        run: |
+          npx tsc --noEmit
+          node tests/cloud-api.mjs
+      - name: Build cloud app
+        run: npm run build

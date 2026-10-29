@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sign in · RaiseSport</title><link rel="icon" href="/images/logo.jpeg"><link rel="stylesheet" href="/manager/dashboard.css"><link rel="stylesheet" href="/athlete/membership.css"><script src="/auth.js" defer></script><script src="/login/login.js" defer></script></head><body><section id="authScreen" class="auth-screen"><div class="auth-card">
+  <a href="/" class="brand"><span class="brand-symbol" aria-hidden="true">R</span><span>RAISE<b>SPORT</b></span></a>
+  <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p><h1 id="authHeading">Welcome back, athlete.</h1><p class="muted" id="authDescription">Your membership, training and academy updates in one place.</p>
+  <div class="auth-switch"><button id="loginTab" class="active" type="button">Sign in</button><button id="registerTab" type="button">Register as an athlete</button></div>
+  <form id="memberAuthForm">
+    <div id="registerFields" hidden><label for="memberName">Full name</label><input id="memberName" autocomplete="name" minlength="2" maxlength="200"><label for="memberPhone">Phone number</label><input id="memberPhone" type="tel" autocomplete="tel" maxlength="40"></div>
+    <label for="memberEmail">Email address</label><input id="memberEmail" type="email" autocomplete="username" maxlength="254" required>
+    <label for="memberPassword">Password</label><input id="memberPassword" type="password" autocomplete="current-password" maxlength="256" required>
+    <div id="registerPlan" hidden><label for="confirmPassword">Confirm password</label><input id="confirmPassword" type="password" autocomplete="new-password" maxlength="256"><label for="memberBilling">Starter Athlete membership</label><select id="memberBilling"><option value="monthly">Monthly · R150 / month</option><option value="annual">Annual · R1,440 / year</option></select><p class="hint">Your account opens immediately. Membership starts as pending until the academy approves it.</p></div>
+    <p id="authError" class="error" role="alert"></p><button id="authSubmit" class="primary" type="submit">Sign in →</button>
+  </form>
+  <div class="coming-soon"><strong>PayFast · Coming soon</strong><strong>Bank transfer · Coming soon</strong><span>No payment is collected during registration.</span></div>
+  <p class="hint">This is the local academy app. Email verification and email delivery are not connected yet.</p><a class="back-link" href="/">← Back to website</a>
+</div><aside class="member-art"><p class="eyebrow">RAISESPORT ACADEMY</p><h2>YOUR TALENT.<br>YOUR JOURNEY.<br>YOUR NEXT LEVEL.</h2><p>Stay connected to your academy, your training and the people helping you move forward.</p></aside></section>
+</body></html>

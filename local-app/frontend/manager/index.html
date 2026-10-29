@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RaiseSport · Manager</title>
+  <link rel="icon" href="/images/logo.jpeg">
+  <link rel="stylesheet" href="/manager/dashboard.css">
+  <script src="/auth.js" defer></script><script src="/manager/dashboard.js" defer></script>
+</head>
+<body>
+  <div id="app" class="shell" data-private hidden>
+    <aside class="sidebar">
+      <a class="brand" href="/"><span class="brand-symbol" aria-hidden="true">R</span><span>RAISE<b>SPORT</b></span></a>
+      <div class="workspace"><span class="workspace-icon">R</span><div><strong>Academy workspace</strong><small>Manager access</small></div></div>
+      <p class="nav-label">WORKSPACE</p>
+      <nav id="navigation" aria-label="Manager sections">
+        <button data-view="overview" class="selected"><span>◈</span> Overview</button>
+        <button data-view="enquiries"><span>✉</span> Enquiries <b id="newCount"></b></button>
+        <button data-view="orders"><span>▤</span> Orders</button>
+        <button data-view="memberships"><span>☆</span> Memberships</button>
+        <button id="athleteManagementBtn"><span>◎</span> Athlete management ↗</button>
+        <button data-view="customers"><span>◎</span> Customers</button>
+        <button data-view="newsletter"><span>↗</span> Newsletter</button>
+        <button data-view="activity"><span>◷</span> Activity</button>
+      </nav>
+      <div class="sidebar-bottom"><a href="/" target="_blank" rel="noopener">View website ↗</a><button id="settingsBtn">Change password</button><button id="logoutBtn">Sign out</button><small>LOCAL WORKSPACE · SOUTH AFRICA</small></div>
+    </aside>
+    <main>
+      <header class="topbar"><span>RaiseSport Academy <span class="divider">/</span> <strong id="breadcrumb">Overview</strong></span><span class="local-label"><i></i> Local server</span></header>
+      <div class="content">
+        <div class="page-heading"><div><p class="eyebrow">ACADEMY MANAGEMENT</p><h1 id="pageTitle">Good to see you, Manager.</h1><p id="pageDescription" class="muted">Here’s what’s happening across your academy.</p></div><button id="refreshBtn" class="secondary">↻ Refresh</button></div>
+        <p id="globalError" class="error" role="alert" hidden></p>
+        <div class="sync-line"><span id="lastUpdated">Loading records…</span><span>Times shown in South Africa</span></div>
+        <section id="overview"></section>
+        <section id="records" hidden>
+          <div class="toolbar"><label class="search-label"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="Search records" placeholder="Search name, email, reference or message…"></label><select id="statusFilter" aria-label="Filter by status"><option value="">All statuses</option></select><button id="exportBtn" class="secondary">Export CSV ↓</button></div>
+          <div class="panel table-panel"><div class="table-caption"><strong id="tableTitle"></strong><span id="recordCount" class="muted"></span></div><div class="table-scroll"><table><thead id="tableHead"></thead><tbody id="tableBody"></tbody></table></div></div>
+        </section>
+        <p class="footnote">Orders are payment requests until you confirm receipt. Enquiry replies and newsletter emails are not sent automatically.</p>
+      </div>
+    </main>
+  </div>
+  <dialog id="detailDialog"><form id="detailForm"><header class="dialog-header"><div><p class="eyebrow" id="detailType"></p><h2 id="detailTitle"></h2></div><button type="button" class="icon-button" id="closeDetail" aria-label="Close details">×</button></header><div id="detailContent"></div><div id="editFields"><label for="detailStatus">Status</label><select id="detailStatus"></select><label for="detailNotes">Private manager notes</label><textarea id="detailNotes" rows="4" maxlength="10000" placeholder="Follow-up details, payment reference, delivery tracking…"></textarea><p class="hint">Notes are visible only in the manager dashboard.</p></div><p id="detailError" class="error" role="alert"></p><footer class="dialog-footer"><span id="saveHint" class="hint"></span><button id="saveDetail" class="primary" type="submit">Save changes</button></footer></form></dialog>
+  <dialog id="passwordDialog"><form id="passwordForm"><header class="dialog-header"><h2>Change manager password</h2><button type="button" class="icon-button" id="closePassword" aria-label="Close">×</button></header><label for="currentPassword">Current password</label><input id="currentPassword" type="password" autocomplete="current-password" required maxlength="256"><label for="newPassword">New password (at least 8 characters)</label><input id="newPassword" type="password" autocomplete="new-password" required minlength="8" maxlength="256"><p class="hint">Changing your password signs out all manager sessions.</p><p id="passwordError" class="error" role="alert"></p><button type="submit" class="primary">Update password</button></form></dialog>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
