@@ -178,7 +178,7 @@ async function subscribeNews(e) {
   const msg = document.getElementById('newsMsg');
   try {
     await api('/newsletter', 'POST', { email: document.getElementById('newsEmail').value });
-    msg.textContent = '✓ Subscribed — welcome to the team!';
+    msg.textContent = '✓ Subscribed - welcome to the team!';
     document.getElementById('newsEmail').value = '';
   } catch (err) { msg.textContent = err.message; }
   msg.style.display = 'block';

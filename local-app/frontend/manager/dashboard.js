@@ -110,7 +110,7 @@ function openDetail(kind,ref) {
   let content = '<div class="detail-grid">'+detailField('Name',row.name)+detailField('Email',row.email);
   if (kind==='orders') {
     content += detailField('Order contact name',row.customer_name||row.name)+detailField('Customer instructions',row.customer_notes||'None');
-    content += detailField('Ordered',date(row.created))+detailField('Total',money(row.total))+detailField('Phone',row.phone||'Not provided')+detailField('Fulfilment',label(row.fulfilment))+detailField('Delivery address',row.address||(row.fulfilment==='delivery'?'Not recorded':'Collection — arrange with customer'),true)+detailField('Last manager update',date(row.updated),true)+'</div><div class="message-box">'+escapeHTML(row.items)+'</div>';
+    content += detailField('Ordered',date(row.created))+detailField('Total',money(row.total))+detailField('Phone',row.phone||'Not provided')+detailField('Fulfilment',label(row.fulfilment))+detailField('Delivery address',row.address||(row.fulfilment==='delivery'?'Not recorded':'Collection - arrange with customer'),true)+detailField('Last manager update',date(row.updated),true)+'</div><div class="message-box">'+escapeHTML(row.items)+'</div>';
     let lines=[];
     try { lines=JSON.parse(row.lines); } catch (_) {}
     if (lines.length) content += '<div class="table-scroll"><table><thead><tr><th>Product</th><th>Qty</th><th>Each</th><th>Total</th></tr></thead><tbody>'+lines.map(l=>'<tr><td>'+escapeHTML(l.name)+'</td><td>'+escapeHTML(l.qty)+'</td><td>'+money(l.unit_price)+'</td><td>'+money(l.unit_price*l.qty)+'</td></tr>').join('')+'</tbody></table></div>';

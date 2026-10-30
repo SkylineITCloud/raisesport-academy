@@ -31,7 +31,7 @@ The supplied athlete is assigned to the supplied coach. Existing memberships and
 
 Review products and quantities in the cart. **Confirm cart & continue** opens checkout for contact details and collection or delivery information. An order is saved only after **Place order**. Guest sign-in keeps the cart and returns to checkout.
 
-**PayFast — Coming soon. Bank transfer — Coming soon.** No payment is collected. New orders and membership requests remain pending until reviewed. Membership approval is a manual academy decision.
+**PayFast - Coming soon. Bank transfer - Coming soon.** No payment is collected. New orders and membership requests remain pending until reviewed. Membership approval is a manual academy decision.
 
 Contact messages and newsletter subscriptions save locally. Registration works immediately in local mode; email delivery and email ownership verification are not connected.
 
